@@ -1,15 +1,20 @@
-name: Build LaTeX document
-on: [push]
+name: 'Build LaTex Document'
+on:
+  push:
 jobs:
-  build_latex:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v2
-      - name: Compile LaTeX document
-        uses: vinay0410/tectonic-action@v1.1.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: wtfjoke/setup-tectonic@v2
         with:
-          tex_path: 4M21-Software-Engineering-and-Design/main.tex
-          push: 'yes'
+          github-token: ${{ secrets.UPLOAD_TOKEN }}
+      - name: Run Tectonic
+        run: tectonic main.tex
+      - name: Upload pdf
+        uses: actions/upload-artifact@v3
+        with:
+          name: 4M21_Notes
+          path: 4M21_Notes.pdf
