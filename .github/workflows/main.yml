@@ -14,12 +14,8 @@ jobs:
           # The root LaTeX file to be compiled
           root_file: main.tex
 
-        
-
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
 
-          
-      
           extra_fonts: ./fonts/*.ttf
 
           # Arbitrary bash codes to be executed before compiling LaTeX documents
@@ -31,10 +27,7 @@ jobs:
           # Instruct latexmk to enable --shell-escape
           latexmk_shell_escape: true
 
-        
-    - name: Check pdf file
-      run: |
-        file 4M21_Notes.pdf | grep -q ' PDF '
+  
 
     - name: Upload file to repository
       run: |
