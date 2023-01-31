@@ -1,11 +1,47 @@
-name: Build LaTeX 
-on:
-  push:
-
+name: Create LaTex PDF
+on: push
 jobs:
-  Setup-Compile-Deploy:
+  build:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: DanySK/compile-and-publish-all-latex@master
-        with:
-          token: ${{ secrets.UPLOAD_TOKEN }}
+    - name: Set up Git repository
+      uses: actions/checkout@v2
+
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v2
+      with:
+          # The root LaTeX file to be compiled
+          root_file: main.tex
+
+        
+
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+
+          
+      
+          extra_fonts: ./fonts/*.ttf
+
+          # Arbitrary bash codes to be executed before compiling LaTeX documents
+          pre_compile: tlmgr update --self && tlmgr update --all
+
+          # Arbitrary bash codes to be executed after compiling LaTeX documents
+          post_compile: latexmk -c
+
+          # Instruct latexmk to enable --shell-escape
+          latexmk_shell_escape: true
+
+        
+    - name: Check pdf file
+      run: |
+        file 4M21_Notes.pdf | grep -q ' PDF '
+
+    - name: Upload file to repository
+      run: |
+        git config --global user.name "Kazal Oshodi"
+        git config --global user.email "kazoshodi@gmail.com"
+        git add -f 4M21_Notes.pdf
+        
+        git commit -m "commit message"
+        git push
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
