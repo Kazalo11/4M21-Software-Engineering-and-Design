@@ -11,5 +11,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
         with:
-          root_file: 4M21-Software-Engineering-and-Design/main.tex
+          tex_path: 4M21-Software-Engineering-and-Design/main.tex
           push: 'yes'
