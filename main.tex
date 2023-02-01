@@ -428,4 +428,35 @@ Project Teams can expand UML to their own needs, as long as everyone on the proj
 \centering
 \includegraphics[width = 0.6\linewidth]{Pictures/Screenshot 2023-01-27 at 12.54.30.png}
 \end{figure}
+\section{Lecture 4 - UML Example}
+\subsection*{Library Management System}
+Requirements: (\textbf{bold} are the key words)
+\begin{enumerate}
+    \item \label{req1} Any library member should be able to \textbf{search books} by their \textbf{title, author} or \textbf{subject}
+    \item \label{req2} Each book should have a: 
+    \begin{itemize}
+        \item \textbf{Barcode}
+        \item \textbf{Bookshelf number}
+        \\ This is to help locate it
+    \end{itemize}
+    \item \label{req3} A library member can use the library system to \textbf{checkout a copy of a book} using this \textbf{account details} from this library cover and \textbf{barcode} printed on the book
+\end{enumerate}
+An example class diagram for \eqref{req1}, \eqref{req2}:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\linewidth]{Pictures/Screenshot 2023-02-01 at 11.54.43.png}
+    \caption{Class Diagram}
+\end{figure}
+An example sequence diagram for \eqref{req3}:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\linewidth]{Pictures/Screenshot 2023-02-01 at 11.57.39.png}
+    \caption{Sequence Diagram}    
+\end{figure}
+We can include another class diagram for this sequence diagram:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\linewidth]{Pictures/Screenshot 2023-02-01 at 12.00.26.png}
+    \caption{Class Diagram}    
+\end{figure}
 \end{document}
