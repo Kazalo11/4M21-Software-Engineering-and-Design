@@ -1,38 +1,11 @@
-name: Create LaTex PDF
-
-
-on: push
-
+name: Build LaTeX 
+on:
+  push:
 
 jobs:
-  build:
+  Setup-Compile-Deploy:
     runs-on: ubuntu-latest
-    env:
-      MANUSCRIPT_PATH: 4M21-Software-Engineering-and-Design/main # exclude the '.tex' / '.pdf' extension!
-      LATEX: pdflatex -shell-escape
-      BIBTEX: bibtex
-    steps: 
-    - uses: actions/checkout@v1
-    - name: Install texlive
-      run: |
-        sudo apt-get install texlive-publishers \
-                             texlive-latex-recommended \
-                             texlive-latex-extra \
-                             texlive-fonts-recommended \
-                             texlive-fonts-extra
-    - name: Build paper
-      run: |
-        cd ${MANUSCRIPT_PATH%/*}
-        ${LATEX} ${MANUSCRIPT_PATH##*/}.tex
-        ${BIBTEX} ${MANUSCRIPT_PATH##*/}.aux
-        ${LATEX} ${MANUSCRIPT_PATH##*/}.tex
-        ${LATEX} ${MANUSCRIPT_PATH##*/}.tex
-    - name: Push paper
-      run: |
-        git checkout --orphan ${GITHUB_REF##*/}-pdf
-        git rm -rf .github/
-        cd ${MANUSCRIPT_PATH%/*}
-        git rm -rf . 
-        git add -f ${MANUSCRIPT_PATH##*/}.pdf
-        git -c user.name='paper-maker' -c user.email='paper-maker' commit -m "update pdf"
-        git push -q -f https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ${GITHUB_REF##*/}-pdf
+    steps:
+      - uses: DanySK/compile-and-publish-all-latex@master
+        with:
+          token: ${{ secrets.UPLOAD_TOKEN }}
