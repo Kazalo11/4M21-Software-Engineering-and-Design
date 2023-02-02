@@ -30,7 +30,7 @@ jobs:
                 || $GITHUB_REF == "refs/tags"*
             ]]; then
               TAG="4M21 Notes $(date +%Y-%m-%d)"
-              hub release create -m "$TAG" || true
+              hub release create -m "$(git tag -l --format='%(contents)' "$TAG")" "$TAG" || true
               while IFS= read -r file; do
                 pdf="${file%.*}.pdf"
                 echo "Delivering file $pdf"
