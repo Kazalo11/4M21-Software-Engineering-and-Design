@@ -1,11 +1,40 @@
-name: Build LaTeX 
-on:
-  push:
-
-jobs:
-  Setup-Compile-Deploy:
-    runs-on: ubuntu-latest
+name: Compile LaTex PDF
+on: push
+  runs:
+    using: "composite"
     steps:
-      - uses: DanySK/compile-and-publish-all-latex@master
-        with:
-          token: ${{ secrets.UPLOAD_TOKEN }}
+      - name: Make ImageMagik permissive
+        shell: bash
+        run: sudo sed -i 's/rights=".*"/rights="all"/' /etc/ImageMagick-6/policy.xml
+      # Checkout the repository
+      - name: Checkout
+        uses: danysk/action-checkout@0.2.5
+      - name: Compile LaTeX
+        uses: DanySK/compile-latex-action@0.3.107
+      - name: Autotag
+        uses: DanySK/semver-autotag-action@0.1.0
+      - name: Deploy
+        env:
+          GITHUB_TOKEN: ${{secrets.UPLOAD_TOKEN}}
+        shell: bash
+        run: |
+          if [[ -z $GITHUB_TOKEN ]]; then
+            echo "No token set, cannot deploy"
+            false
+          else
+            if [[ $GITHUB_REF == 'refs/heads/master'
+                || $GITHUB_REF == 'refs/heads/main'
+                || $GITHUB_REF == 'refs/heads/default'
+                || $GITHUB_REF == "refs/tags"*
+            ]]; then
+              TAG="4M21 Notes $(date +%Y-%m-%d)"
+              hub release create -m "$(git tag -l --format='%(contents)' "$TAG")" "$TAG" || true
+              while IFS= read -r file; do
+                pdf="${file%.*}.pdf"
+                echo "Delivering file $pdf"
+                gh release upload "$TAG" "$pdf" --clobber
+              done <<< "$LATEX_SUCCESSES"
+            else
+              echo "Not running deployment from unknown source: $GITHUB_REF"
+            fi
+          fi
