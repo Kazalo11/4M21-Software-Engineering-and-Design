@@ -1,7 +1,9 @@
 name: Compile LaTex PDF
-on: push
-  runs:
-    using: "composite"
+on:
+  push: 
+jobs:
+  Setup-Compile-Deploy:
+    runs-on: ubuntu-latest
     steps:
       - name: Make ImageMagik permissive
         shell: bash
@@ -15,7 +17,7 @@ on: push
         uses: DanySK/semver-autotag-action@0.1.0
       - name: Deploy
         env:
-          GITHUB_TOKEN: ${{secrets.UPLOAD_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
         shell: bash
         run: |
           if [[ -z $GITHUB_TOKEN ]]; then
@@ -38,3 +40,5 @@ on: push
               echo "Not running deployment from unknown source: $GITHUB_REF"
             fi
           fi
+
+  
