@@ -13,8 +13,6 @@ jobs:
         uses: danysk/action-checkout@0.2.5
       - name: Compile LaTeX
         uses: DanySK/compile-latex-action@0.3.107
-      - name: Autotag
-        uses: DanySK/semver-autotag-action@0.1.0
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
@@ -29,7 +27,7 @@ jobs:
                 || $GITHUB_REF == 'refs/heads/default'
                 || $GITHUB_REF == "refs/tags"*
             ]]; then
-              TAG="4M21 Notes $(date +%Y-%m-%d)"
+              TAG="4M21_Notes-$(date +%Y.%m.%d)"
               echo "$TAG"
               hub release create -m "$(git tag -l --format='%(contents)' "$TAG")" "$TAG" || true
               while IFS= read -r file; do
