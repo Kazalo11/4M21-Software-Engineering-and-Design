@@ -459,4 +459,149 @@ We can include another class diagram for this sequence diagram:
     \includegraphics[width = 0.7\linewidth]{Pictures/Screenshot 2023-02-01 at 12.00.26.png}
     \caption{Class Diagram}    
 \end{figure}
+\section{Lecture 5 - Design Patterns}
+We use Design Patterns as the same architectural structures occur in response to commonly occurring problems
+\subsection{Structure of Problems}
+Each pattern has a standard format:
+\begin{itemize}
+    \item Motivation: specific functionality we want our software to provide
+    \item Solution options: Explore some ways of providing this functionality, and discuss their limitations
+    \item Optimal Solution: Present a preferred solution based on a design pattern
+    \item Code Example: Give an example of the code of a design solution 
+    \item Design Pattern: Discuss the principle underlying a good solution + applicability to other solutions. Can show generic design pattern using UML
+    \item Disadvantages: Discuss shortcoming of design pattern, and why you might not want to use it for certain cases
+\end{itemize}
+\subsection{Composite}
+We use the composite design pattern when we want to operate on individual items, and groups of those in a common way. For example, if we want to move folders and files the same way. \\
+\subsubsection*{Motivation}
+We want our drawing editor to support grouping and ungrouping operations, so that a number of shapes can be collected together and treated as a single entity.
+\subsubsection*{Solution Options}
+We could add a group member field into Shape to indicate which group each shape belongs to:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.27.22.png}
+\end{figure}
+Pros of this - simple to implement. Cons - can't support nested group
+\subsubsection*{Optimal Solution}
+We can introduce a new class ShapeGroup to manage a group of shapes. This would be a subclass of Shape, and thus keeps the Shape class interface
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-05 at 12.29.32.png}
+    \caption{Optimal Solution}
+\end{figure}
+\subsubsection*{Object Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.30.50.png}
+\end{figure}
+\subsubsection*{General UML}
+Composition of objects: Each component can be a leaf, or a composite of another component - which can be a leaf or a composite. \\
+In this UML diagram, Client class doesn't refer to the Leaf and Composite class directly, it refers to the common interface to treat both Leaf and Composite in the same way.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-05 at 12.32.37.png}
+\end{figure}
+\subsubsection*{Disadvantages}
+Sometimes this pattern is too general, so it is difficult to restrict the objects which can be included in the composite group. \\
+Futhermore, since the Composite class has to be extended to provided access to individual group members, then the client code which be able to tell the different between composite objects and non-composite objects.
+\subsection{Decorator}
+Decorator pattern allows us to add functionality without changing the original class
+\subsubsection*{Problem}
+We want to introduce a facility into our drawing editor which allows frames to be added to arbitary objects e.g an image
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-02-05 at 12.35.44.png}
+\end{figure}
+\subsubsection*{Optimal Solution}
+We add a single new subclass of Shape called FramedShape. This has a pointer to a Shape object, which is the shape contained in the frame.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.36.52.png}
+\end{figure}
+This means that we can frame any object, and even create a frame around a FramedShape. \\
+The object structure would then be like:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-02-05 at 12.38.02.png}
+\end{figure}
+\subsubsection*{General UML}
+This pattern allows us to add optional functionality to all classes, without changing the code for either the base class or any of the subclasses. Multiple decorations can even be added to an object.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.39.52.png}
+\end{figure}
+\subsubsection*{Disadvantages}
+If there are not too many kinds of added functionality, and they appear fairly common, then might as well manually add to each class. \\
+Also, not even class should become a decorator class. In a running system, can cause a long chain of small objects which all point to each other.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Pictures/Screenshot 2023-02-05 at 12.42.17.png}
+\end{figure}
+\subsection{Observer}
+For this pattern, an object known as a subject maintains a list of dependents, known as its observers, and notifies them of any changes in its state. \\
+\subsubsection*{Problem}
+A Business News Publishers needs to inform its News Subscribers who need to be updated as soon as the news comes out.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.46.07.png}
+\end{figure}
+But we want to extend the system to introduce more different types of subscribers. This pollutes the BusinessNewsPublisher class, and they don't need to know anything about Subscribers. The key relationship here is one to many.
+\subsubsection*{Optimal Solution}
+NewsProvider doesn't update the state of dependent objects directly, instead Subscriber interface is called by NewsPublisher to update the state.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.48.04.png}
+\end{figure}
+\subsubsection*{Class Diagram}
+This allows multiple objects to maintain a consistent view on the state of the subject.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.49.04.png}
+\end{figure}
+\subsubsection*{Sequence Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.49.43.png}
+\end{figure}
+\subsubsection*{Disadvantages}
+This pattern could lead to a large amount of computational overhead if not safe-guarded e.g if the rate of notifications is high, and the reaction to these updates is a heavy-load operation.
+\subsection{Model - View - Controller}
+These are architectural pattern, which utilise design patterns. \\ The Model-View-Controller (MVC) is the common pattern which seperates the data, its presentation and how it is manipulated by the user.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.52.08.png}
+    \caption{Model-View-Controller}
+\end{figure}
+The individual elements are:
+\begin{itemize}
+    \item Model - an abstraction of the data that provides ways of accessing and manipulating it
+    \item View - presents a specific purpose view onto the Model, captures User's input, then passes it on to the Controller
+    \item Controller - interprets User's input and invokes corresponding actions onto the Model
+\end{itemize}
+\subsubsection*{Passive Mode}
+The Controller is the only class that affects the Model. The Controller has to modify the Model based on user's action, then the Controller notifies the View that it has to be updated. The View gets the Data from the Model, and updates itself.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.55.35.png}
+\end{figure}
+\subsubsection*{Active Mode}
+The Controller is not the only class that affects the Model. After the Model is updated, the Model notifies the View and other classes about updates (Observer Pattern). \\ The View implements the Observer interface, whereas the Model is a subject.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.57.24.png}
+\end{figure}
+There is also a variation, where all notifications of state changes in Model to come to the View through the Controller.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.58.26.png}
+\end{figure}
+\subsection{Mobile app Store Design Example}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Pictures/Screenshot 2023-02-05 at 12.59.21.png}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Pictures/Screenshot 2023-02-05 at 13.00.02.png}
+\end{figure}
 \end{document}
