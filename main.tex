@@ -41,7 +41,7 @@
 
 \section{Lecture 1}
 Software Engineering: a collection of methods,techniques and tools that could be applied to design, build and maintain the instructions for telling a computer what to do and how to do it
-\subsection{Software Process}
+\subsection{Software Process}\label{sp}
 \begin{itemize}
     \item Analysis: process of understanding the requirements, constraints and goals of a software development project in order to identify the best solution + alignment with stakeholder's needs
     \item Design: creating a definition of how project goals will be achieved
@@ -595,13 +595,108 @@ There is also a variation, where all notifications of state changes in Model to 
     \centering
     \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-05 at 12.58.26.png}
 \end{figure}
-\subsection{Mobile app Store Design Example}
+\subsection{Mobile App Store Design Example}
+\includepdf[pages=-]{Assets/Mobile_Example.pdf}
+What if we now have new requirements? When a sale is made:
+\begin{itemize}
+    \item The developer should be notified by email
+    \item Analytics View showing all sales should be updated
+\end{itemize}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{Pictures/Screenshot 2023-02-05 at 12.59.21.png}
+    \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-08 at 11.55.08.png}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{Pictures/Screenshot 2023-02-05 at 13.00.02.png}
+\includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-08 at 11.55.20.png}
 \end{figure}
+\section{Software Development Methodologies}
+\subsection{Waterfall Model}
+There is a basic traditional waterfall model for developing software based on the software process \eqref{sp}:
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-08 at 12.13.38.png}
+\end{figure}
+The advantages of this model are:
+\begin{itemize}
+    \item Early clarification of system goals
+    \item Can charge for changes to the requirements
+    \item Works well with management tools
+\end{itemize}
+The disadvantages of this model are:
+\begin{itemize}
+    \item Iterations are critical to software development process, and aren't highlighted in this model
+    \item A lot of time is taken on getting the system absolutely right from the beginning
+\end{itemize}
+\subsection{Traditional Team}
+In a traditional team there is:
+\begin{itemize}
+    \item Architect: principal designer $\rightarrow$ defines the overall architecture, module structure and all major interfaces. Responsible for Specification and High Level Design
+    \item Project Manager: scheduling/rescheduling the work, tracking progress and ensuring all process steps are properly completed
+    \item Lead programmer: Lead of programming team, will spend 30\% of his/her time managing rest of team
+    \item Programmer: Implements specific modules + module test procedures
+    \item Tester: Designs test + validation procedures for completed software. These are based on initial specification, and will focus on overall product.
+\end{itemize}
+Gantt charts can be used to show tasks over the timeline with milestones and dependencies.
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-08 at 12.17.55.png}
+\caption{Gantt Chart}
+\end{figure}
+\subsection{Spiral Model}
+This model allows you to manage risk and handle unknown problems after the project has started. This is done by developing prototypes. Each spiral is a phase, and the radius represents costs so far. The number of spirals depends on the project.
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-08 at 12.27.15.png}
+\caption{Spiral Model}
+\end{figure}
+The advantages of this is that:
+\begin{itemize}
+    \item Iterative development with systematic aspects of waterfall model
+    \item Iterative incremental refinement through each time around spiral
+\end{itemize}
+The disadvantages are:
+\begin{itemize}
+    \item Costly: Expensive to go through the software process everytime
+    \item Complexity: hard to understand for new teams to software development
+\end{itemize}
+\subsection{Evolutionary Model}
+These have iterative (with feedback from users) and incremental (consists of smaller incremental waterfall models) delivery
+\begin{figure}[H]
+    \centering
+\includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-02-08 at 12.33.18.png}
+\caption{Evolutionary Model}
+\end{figure}
+The advantages are:
+\begin{itemize}
+    \item Flexible: easy to make changes based on user input
+    \item Faster delivery of code
+\end{itemize}
+The disadvantages are:
+\begin{itemize}
+    \item If the system deliverables can't be easily split into version which can be delivered to the consumer incrementally, then this model is not ideal
+    \item Scope creep: The scope can expand infinitely over time if not careful
+    \item Can have a lack of a clear plan if you are just focusing on prototypes
+\end{itemize}
+\subsection{Testing}
+Testing is important as people work in teams. Thus trust is essential, and defects destroy the trust required for effective software development.
+\subsubsection*{What is Testing?}
+Testing is double checking. 
+\begin{quote}{Andrew Hunt and David Thomas, The Pragmatic Programmer}
+Finding bugs is somewhat like fishing with a net. We use fine, small nets \textbf{(unit tests)}
+ to catch the minnows, and big, coarse nets \textbf{(integration tests)} to catch the killer sharks.
+\end{quote}
+\subsubsection*{What to Test?}
+We have several different types of tests:
+\begin{itemize}
+    \item Unit test: code that exercise a small unit of software seperate from other units of application. Foundation of all other types of testing - if the parts don't work by themselves they won't work together
+    \item Integration testing: seeing how all the parts interact with each other. With good OO design in place, should be easy to find the issues
+    \item Validation and verification: Does the code fit what the user needs, are the functional requirements met?
+    \item Resource Exhaustion: check if the system works well in the real-world. Could it run out of memory, disk space, CPU bandwidth etc
+    \item If it has to fail, will it fail gracefully
+    \item Performance Testing: What if number of users/connections increases. Is it scalable?
+    \item Usability Testing: Will it work with real users under real conditions. Also is it intuitively clear how to use
+\end{itemize}
+Note that tests are also software, need to test them.
+
 \end{document}
