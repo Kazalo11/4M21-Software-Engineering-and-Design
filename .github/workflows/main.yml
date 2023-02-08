@@ -31,7 +31,7 @@ jobs:
               echo "$TAG"
               hub release create -m  "$TAG" "$TAG" || true
               while IFS= read -r file; do
-                pdf="4M21_Notes-$(date +%Y.%m.%d).pdf"
+                pdf="${file%.*}.pdf"
                 echo "Delivering file $pdf"
                 gh release upload "$TAG" "$pdf" --clobber
               done <<< "$LATEX_SUCCESSES"
