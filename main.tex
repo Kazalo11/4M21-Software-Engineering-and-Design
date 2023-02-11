@@ -610,7 +610,7 @@ What if we now have new requirements? When a sale is made:
     \centering
 \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-08 at 11.55.20.png}
 \end{figure}
-\section{Software Development Methodologies}
+\section{Lecture 6 - Software Development Methodologies}
 \subsection{Waterfall Model}
 There is a basic traditional waterfall model for developing software based on the software process \eqref{sp}:
 \begin{figure}[H]
@@ -680,13 +680,13 @@ The disadvantages are:
 \end{itemize}
 \subsection{Testing}
 Testing is important as people work in teams. Thus trust is essential, and defects destroy the trust required for effective software development.
-\subsubsection*{What is Testing?}
+\subsubsection{What is Testing?}
 Testing is double checking. 
 \begin{quote}{Andrew Hunt and David Thomas, The Pragmatic Programmer}
 Finding bugs is somewhat like fishing with a net. We use fine, small nets \textbf{(unit tests)}
  to catch the minnows, and big, coarse nets \textbf{(integration tests)} to catch the killer sharks.
 \end{quote}
-\subsubsection*{What to Test?}
+\subsubsection{What to Test?}
 We have several different types of tests:
 \begin{itemize}
     \item Unit test: code that exercise a small unit of software seperate from other units of application. Foundation of all other types of testing - if the parts don't work by themselves they won't work together
@@ -698,5 +698,127 @@ We have several different types of tests:
     \item Usability Testing: Will it work with real users under real conditions. Also is it intuitively clear how to use
 \end{itemize}
 Note that tests are also software, need to test them.
+\subsubsection{Regression Tests and Test Data}
+Regression tests:
+\begin{itemize}
+    \item Compares the output of previous test with previous/known values
+    \item Makes sure that bugs fixed today don't break something else
+    \item Use regression tests to make sure that components function correctly, entire subsystem functions, performance etc
+\end{itemize}
+Test Data:
+\begin{itemize}
+    \item Real world - typical data collected. We use this as it might reveal misunderstandings
+    \item Synthetic - artificially generated data. We use this as we might not have enough real data, or need certain properties to test
+\end{itemize}
+\subsubsection{How to Plan Testing}
+Testing Quadrants:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.9\linewidth]{Pictures/Screenshot 2023-02-11 at 15.41.28.png}
+\end{figure}
+This splits tests based on:
+\begin{itemize}
+    \item Where they are Business-Facing (described to business expert) or Technology-Facing (developer domain)
+    \item Where they support software development process, or used to critique the product
+\end{itemize}
+\textbf{Q1 Technology-Facing/Supporting Development} 
+\begin{itemize}
+    \item Testing Quadrant: Unit Tests, Component Tests, Deployment Tests
+    \item Deployment Tests are performed whenever on deploys the application, to check if it is installed and configured correctly
+\end{itemize}
+\textbf{Q2 Business-Facing/Supporting Development}
+\begin{itemize}
+    \item Testing Quadrant: Functional, Prototypes, Simulations, Acceptance
+    \item Acceptance Tests: conducted by consumer to verify that system meets the acceptance criteria of application
+    \begin{itemize}
+        \item Should be written and automated by consumer/users before development starts
+        \item Answers the questions: For developers (How do I know when I am done), for users (Did I get what I wanted)
+        \item Should run in production
+    \end{itemize}
+    \item Functional Acceptance Tests: acceptance tests that concern the functionality of the system
+\end{itemize}
+\textbf{Q3 Business-Facing/Critique the Product}
+\begin{itemize}
+    \item Testing Quadrant: Exploratory, Usability, User Acceptance, Scenarios, Alpha/Beta
+    \item Checking that the specification is correct
+    \item Applications are never specified perfectly in advance: always room for improvement, or users try things they are not supposed to
+    \item Showcases: show new functionality to the users to catch misunderstandings early
+    \item Exploratory: Tester controls the design of tests as they are performed, and uses that to design new and better tests
+    \item Beta: Release new features to a select group of real users without them noticing
+\end{itemize}
+\textbf{Q4 Technology-Facing/Critique the Project} 
+\begin{itemize}
+    \item Testing Quadrant: Performance, Load, Security
+    \item Acceptance Tests can test other qualities of system e.g capacity, usability, security
+\end{itemize}
+\subsubsection{When to Test}
+We should test as soon as we have code, frequent testing reduce costs and defects
+\subsubsection{Who Should Test}
+We should automate tests as much as possible. Developers hate testing, and it can be very tedious. \\
+The goal of automated tests is to reach 100\% coverage, i.e coverage the most practically possible number of test cases. \\
+We can use profiling tools to analyse software performance e.g tracking Memory Allocation to spot memory leaks and inefficient memory use.
+\subsubsection{Analytics}
+Once the product is live with user, we need to get some analytics. \\
+This is when we collect and analyse data on product's use to increase product's performance in market. Example metrics would be daily active users, conversion (how many users signed up/made a purchase), engagement.
+\section{Lecture 7 - Agile Development}
+We do all of this because keeping the system in production has a lot of benefits:
+\begin{itemize}
+    \item Allows more frequent feedback from colleagues
+    \item Release more important features earlier
+\end{itemize}
+However comes at a cost:
+\begin{itemize}
+    \item More intense collaboration between departments
+    \item More effort to deploy regularly
+\end{itemize}
+\subsection{Extreme Programming (XP)}
+The driving point behind this was: improve software quality, reduce cost of change. \\
+XP Values: \textbf{Communcation, Simplicity, Feedback, Courage, Respect} \\
+XP Principles:
+\begin{itemize}
+    \item \textbf{Accepted Responsibility} - responsibility can't be assigned only accepted
+    \item \textbf{Economics}
+    \item \textbf{Mutual Benefits} - every activity should benefit everyone concerned e.g automated testing
+    \item \textbf{Self-similarity} - copy structure of new solution in different context
+    \item \textbf{Improvement}
+    \item \textbf{Diversity}
+    \item \textbf{Reflection}
+    \item \textbf{Flow} - deliver steady flow of software
+\end{itemize}
+Primary XP Practices:
+\begin{itemize}
+    \item Pair programming
+    \item Stories - move from requirements to stories with description of one functionality per story
+    \item Weekly cycle and Quarterly Planning
+    \item Test-First programming (TDD)
+\end{itemize}
+\subsection{Continuous Integration (CI)}
+Idea behind it: integration is unpredictable, so should integrate and test changes every few hours. Only once the entire test suite has passed should you continue. \\
+Key ingredients: Source Repo, Automated Build, Agreement of team. 
+\subsubsection{Automated Build} 
+Everything should be included, so that someone can be bring in a new machine, check everything out and have a running system on their machine 
+\subsubsection{Key Practices} 
+\begin{itemize}
+    \item Maintain a single main branch
+    \item Automate the build
+    \item Make your build self-testing
+    \item Test in clone of production environment
+\end{itemize}
+\subsubsection{CI Software} 
+Check with your repo if any commits have occurred. If so check out latest version of software, run build script, run tests to notify results. Examples include TravisCI.
+\subsection{Continuous Delivery (CD)}
+We want to build software that is always in a production ready state. This is done by running a deployment pipeline that tests whether the deployment is in a state to be delivered.
+\subsubsection{Deployment Pipeline}
+This is an automated software delivery system. The stages are:
+\begin{enumerate}
+    \item Developers commit changes in their source repo. The first commit complies the code, runs the tests, if all ok then turn the executable code into binaries and store in binary repo.
+    \item Longer running automated acceptance tests
+    \item Pipeline branches to enable independent deployment of your builds in various environments. Testers should be able to see release candidates available, and deploy in relevant environments. 
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{Pictures/Screenshot 2023-02-11 at 16.30.40.png}
+    \caption{CD Pipeline}
+\end{figure}
 
 \end{document}
