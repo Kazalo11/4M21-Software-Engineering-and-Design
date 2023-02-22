@@ -21,7 +21,7 @@ jobs:
       - name: List files in directory
         run: ls -R
       - name: Rename PDF file
-        run: mv 4F3.pdf $(date +%Y-%m-%d)-4M21.pdf
+        run: mv 4M21.pdf $(date +%Y-%m-%d)-4M21.pdf
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
