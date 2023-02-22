@@ -36,7 +36,7 @@ jobs:
                 || $GITHUB_REF == 'refs/heads/default'
                 || $GITHUB_REF == "refs/tags"*
             ]]; then
-              TAG="4F3_Notes-$(date +%Y.%m.%d)"
+              TAG="4M21_Notes-$(date +%Y.%m.%d)"
               echo "$TAG"
               hub release create -m  "$TAG" "$TAG" || true
               while IFS= read -r file; do
