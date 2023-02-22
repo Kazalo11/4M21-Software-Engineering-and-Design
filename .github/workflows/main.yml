@@ -1,6 +1,11 @@
 name: Compile LaTex PDF
 on:
-  push: 
+  push:
+    paths:
+      - '**/*.tex'
+  pull_request:
+    paths:
+      - '**/*.tex'
 jobs:
   Setup-Compile-Deploy:
     runs-on: ubuntu-latest
@@ -13,6 +18,10 @@ jobs:
         uses: danysk/action-checkout@0.2.5
       - name: Compile LaTeX
         uses: DanySK/compile-latex-action@0.3.107
+      - name: List files in directory
+        run: ls -R
+      - name: Rename PDF file
+        run: mv 4F3.pdf $(date +%Y-%m-%d)-4M21.pdf
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
@@ -27,11 +36,11 @@ jobs:
                 || $GITHUB_REF == 'refs/heads/default'
                 || $GITHUB_REF == "refs/tags"*
             ]]; then
-              TAG="4M21_Notes-$(date +%Y.%m.%d)"
+              TAG="4F3_Notes-$(date +%Y.%m.%d)"
               echo "$TAG"
               hub release create -m  "$TAG" "$TAG" || true
               while IFS= read -r file; do
-                pdf="${file%.*}.pdf"
+                pdf="$(date +%Y-%m-%d)-${file%.*}.pdf"
                 echo "Delivering file $pdf"
                 gh release upload "$TAG" "$pdf" --clobber
               done <<< "$LATEX_SUCCESSES"
