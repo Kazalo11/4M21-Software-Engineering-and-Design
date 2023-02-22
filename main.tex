@@ -11,6 +11,7 @@
 \usepackage{subcaption}
 \usepackage{minted}
 \usepackage{pdfpages}
+\usepackage{tabulary}
 \usepackage[numbers]{natbib}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \renewcommand\theadfont{\bfseries\sffamily}
@@ -922,4 +923,233 @@ Humans have an egocentric fallacy - we assume that others are like us, and thus 
 \end{itemize}
 \subsection{Approach}
 We focus on principles and skills. By principle, we mean a foundational idea that explains how some happens in human-computer interaction. For example, \textbf{Direct Manipulation} states that computational objects must be presented on a display and acted on by the user through direct, reversible and incremental actions with immediate feedback.
+\section{Understanding People}
+There are several types of understanding, these include:
+\begin{enumerate}
+    \item Theories: consist of constructs and relations amongst those constructs
+    \item Concepts: name particular phenomena, how to identify the phenomena, where they usually occur, and their underpinning mechanisms
+    \item Taxonomies: system of elements or mechanism of how people feel, think or act
+    \item Models: simplifications of reality
+    \item Guidelines: theoretical knowledge that can be summarised in practical rules of thumb/heuristics
+\end{enumerate}
+Note, we can't create user experience, we can only create an interface to allow users to feel something. \\
+\begin{center}
+\begin{tabulary}{0.99\textwidth}{|p{2.5cm}|C|C|}
+    \hline
+\thead{Area} & \thead{Focus} & \thead{Relevance for design} \\ 
+                    \hline
+Perception & How people sense things & Informs the design of user interfaces  \\    \hline
+Motor control & How people move & Informs the design of input devices, interaction techniques \\ \hline
+Cognition & How people remember, pay attention, think & Informs the design of tasks which require memory and reasoning \\ \hline
+Needs & How needs work to motivate people & Tells us what's important for users in computer use \\ \hline
+Experience & How people experience/form experiences & Tells us how users experience events involving computers \\ \hline
+Communication & How people communicate with each other & Informs design for human-human communication \\ \hline
+Collaboration & How people achieve joint goals & Informs design of collaborative software \\ \hline
+    \end{tabulary}
+\end{center}
+We also need to apply our understanding of people:
+\begin{itemize}
+    \item Direct what to pay attention to 
+    \item Explain empirical findings
+    \item Make design decisions
+    \item Explore a design space
+    \item Predict people's behaviour
+\end{itemize}
+\subsection{Perception}
+Perceptions serves a lot of roles in human-computer interaction. We regulate our actions in interaction via perception, and user interfaces communicate their state via perception. \\
+There are 3 main processes which contribute to perception:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{Pictures/Screenshot 2023-02-22 at 15.33.15.png}
+\end{figure}
+Although it seems like our experience of the world is veridically (truthfully) reflecting the sensory information we receive, our perception is affected by our expectations which are drawn from prior experiences, along with how we deploy attention to sample attention. \\
+We also have sensation - a physiological process that produces information about the environment for perception. This is about transduction - generating output data from input data. \\
+Some examples of human sensory modalities ( how human perceive the world using their senses) in HCL are:
+\begin{center}
+\begin{tabulary}{0.99\textwidth}{|p{3cm}|C|C|}
+    \hline
+\thead{Sensory Modality} & \thead{Key Characteristics} & \thead{Design considerations} \\ 
+                    \hline
+    Vision & Fast, field of view about 180º & Visual graphical displays e.g contrast \\ \hline
+    Hearing & Very Fast, but can only process information one at a time, 360º field & Properties of sound and voice e.g pitch, melody \\ \hline
+    Tactition & Fast, but only areas of physical contact & Properties of haptic simulation e.g amplitude, frequency of vibration \\ \hline
+    \end{tabulary}
+\end{center}
+Some relevant properties we can use are:
+\begin{itemize}
+    \item Information rate: how much information can be sensed per unit of time
+    \item Parallelism: how much parallel processing of information can occur 
+    \item Sensitivity: minimum intensity of physical stimulation for receptor to exceed its sensation threshold
+    \item Receptive field: Region of space that activates neurons in visual space
+    \item Adaption: Tuning of outputs to attenuate non-informative signals
+\end{itemize}
+Example of some perceptual tasks are:
+\begin{itemize}
+    \item Discrimination: telling whether a difference occurs in sensory stimulation
+    \item Detection: telling whether an event of interest occurs in the environment
+    \item Recognition: categorising a stimulus as something
+    \item Estimation: estimating a property of an object in the environment
+    \item Search: localising an object of interest
+\end{itemize}
+There are also windows of visibility - we use them to understand how viewing conditions affect perceptual tasks. Some examples are:
+\begin{itemize}
+    \item Visible spectrum of light - can only perceive in limited range of spectrum of light
+    \item Field of view - field of view is limited to 190º horizontally, 125º vertically 
+    \item Contrast - difference in color that makes something in field of view stand out
+    \item Foveated vision - retinal image is limited, non-uniform. At the periphery it loses accuracy
+\end{itemize}
+There is also perceptual organisation:
+\begin{enumerate}
+    \item The division of elements in figure and ground. Some objects belong to a figure, and some belong to the background. We can use this to show a display hierarchy
+    \item Their grouping into coherent regions
+\end{enumerate}
+\subsubsection*{Gestalt Laws}
+These are visual grouping rules:
+\begin{itemize}
+    \item Proximity: group based on how close elements are to each other
+    \item Common area: have defined regions, group elements depending on how they fit in these regions
+    \item Similarity: elements with similar qualities grouped together
+    \item Continuation: elements are connected by continuation of flow
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-22 at 15.59.34.png}
+\end{figure}
+\subsubsection*{Visual Saliency}
+This is the probability with which visual features attract attention when we see a user interface for this first time. This can depend on the distribution of visual features, expectation (prior experiences on similar designs)
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-02-22 at 16.03.33.png}
+\end{figure}
+We can also use ths to explain how cluttered a display is perceived to be, as clutter means that everything on the display attempts to be salient. Imagine trying to play a note on a display. If a display is cluttered, then there is no visual feature which would make the note stand out.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-02-22 at 16.05.03.png}
+\end{figure}
+\subsection{Motor Control}
+We can personalise graphical layouts to better match a user's motor abilities. This can also be done by making objects on display easier to select. Some elements of a HCI motor task include:
+\begin{itemize}
+    \item End-effector: the body part we are using to select
+    \item Degrees-of-freedom: how many ways we can translate that end-effector in 3D space
+    \item Aimed movement: Attempt to move end-effector to certain location
+    \item Interception Task: A task with both spatial and temporal demands e.g trying to catch a falling object
+    \item Speed-accuracy tradeoff: Higher speed results in lower accuracy
+\end{itemize}
+\subsubsection*{Fitt's Law}
+Fitt's Law models the \textbf{movement time} (MT) it takes for a user to acquire a target with \textbf{index of difficulty} (ID):
+\[
+MT = a + bID, \; ID = \log_2(\frac{D}{W}+1)
+\]
+Where D,W are the distance and width to the target, and a/b are regression coefficients. \\
+We can use this law to compute input devices using throughput. Throughput is the number of bits a user can communicate independently of a specific target. One way to measure it is:
+\[
+TP = \frac{ID_{\text{avg}}}{MT_{\text{avg}}}
+\]
+But this relies on an arbitrary ID. So we can also use:
+\[
+TP = \frac{1}{b}
+\]
+This has a downside that it ignores intercept a, but it more commonly used.
+\subsubsection*{Crossing}
+A crossing task is a target acquisition task that relaxes the stopping constraint of a pointing task (D parameter). This allows the user to select multiple targets in one motion.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Pictures/Screenshot 2023-02-22 at 16.22.52.png}
+    \caption{Cluttered display}
+\end{figure}
+\subsection{Steering}
+Steering is when we move a cursor within a tunnel constraint. We can model the time (T) taken for a user to steer a cursor through a tunnel by:
+\[
+T = a + b \int_C \frac{ds}{W(s)}
+\]
+Where a,b are parameters, C is the tunnel parameterised by s, and W(s) is the width of the tunnel at s. If we differentiate both sides, with respect to s then we get:
+\[
+\frac{ds}{dT} = \frac{W(s)}{b}
+\]
+Thus, instanteous movement speed is proportional to the width of the tunnel. We can also define the index of difficulty for a parameterised curve C as:
+\[
+ID_C = \int_C \frac{ds}{W(s)}
+\]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-02-22 at 18.21.16.png}
+    \caption{Steering}
+\end{figure}
+A steering task with constraints on both ends, follows the same log relationship as Fitt's Law
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\linewidth]{Pictures/Screenshot 2023-02-22 at 18.23.08.png}
+\end{figure}
+\subsubsection*{Simple Reaction}
+A simple reaction is when something appears on the display, and the user must respond to it as quickly as possible. We can model this by:
+\[
+RT = T_d + T_{er} = T_d + x +y
+\]
+Where RT is the reaction time, $T_d$ is the decision time, $T_{er}$ is the non-decision time, x is the time duration for perceptually encoding the stimulus, and y is the time duration for the motor response.
+\subsubsection*{Choice Reaction}
+This is when there are n options available. When a cue appears, the user must response as quickly as possible by pressing the correct key. This is open-loop. We can model the decision time as:
+\[
+\begin{aligned}
+T &= bH \\
+H &= \sum_{i=1}^n p_i \log_2(\frac{1}{p_i}+1)
+\end{aligned}
+\]
+Where T is the time taken, b is a parameter, and $p_i$ is the probability of each ith choice.
+\subsubsection*{Hick-Hyman's Law: Choice Reaction}
+This Law comes from if all the choices in a reaction task are equally probable. The average choice reaction time T for n choices is then:
+\[
+T = a + b\log_2(n)
+\]
+If there is uncertainty i.e chance of no response, then the formula is:
+\[
+T= a + b\log_2(n+1)
+\]
+As no response is just another choice
+\subsection{Cognition}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Pictures/Screenshot 2023-02-22 at 18.30.45.png}
+\end{figure}
+Cognition for HCI relies on:
+\begin{itemize}
+    \item Supervisory control: adaptively deciding goals, changing course of action when required
+    \item Memory: forming, maintaining and accessing beliefs about objects that are not directly perceivable
+    \item Attention: selectively processing some part of the perceptual field
+    \item Reasoning: applying transformation rules to beliefs to form new beliefs
+    \item Decision-making: Interaction can often require making decisions
+\end{itemize}
+In HCI, the goal often relates to something that people would like the computer to do. This affects how cognition processes information. Human memory is more about offering access to memories that may be useful for a given task. \\
+This requires mental effort:
+\begin{enumerate}
+    \item Task effort: responses to increase computational demands e.g using a new interface
+    \item State effort: Energy required to protect performance from physiological fatigue e.g sleep deprivation
+\end{enumerate}
+\subsection{Needs and Motivations}
+There are psychological needs which interactive systems can satisfy:
+\begin{center}
+\begin{tabulary}{0.99\textwidth}{|C|C|}
+    \hline
+\thead{Psychological Need} & \thead{Explanation} \\ 
+                    \hline
+    Relatedness & Need for social relationships \\ \hline
+    Meaning & Need for purpose and direction \\ \hline
+    Stimulation & Need for novel sensations and thoughts \\ \hline
+    Competence & Need for the ability to perform well in important activities \\ \hline
+    Popularity & Need for recognition by others \\ \hline
+    Security & Need for protection of self from  harm \\ \hline
+    \end{tabulary}
+\end{center}
+\subsection{Collaboration}
+Collaboration is a mutual beneficial relationship between 2 or more parties, whereas cooperation means that a division of labor is in place. There is a 2-axis model of collaborative tech:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{Pictures/Screenshot 2023-02-22 at 18.40.11.png}
+\end{figure}
+We also need to consider:
+\begin{itemize}
+    \item Scale
+    \item Nascene: degree of coordination actions that are under development by participants i.e how much freedom do they have to make modifications
+    \item Planned permanence: intended stability of collab arrangement
+    \item Turnover: stability of a group of participants
+\end{itemize}
 \end{document}
