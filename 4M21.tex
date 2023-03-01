@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[top=4cm, bottom=3cm, left=2cm, right=2cm]{geometry}
+\usepackage[top=2cm, bottom=3cm, left=2cm, right=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{nccmath}
@@ -1229,7 +1229,7 @@ We want to use user research to inform design decisions. That means we have to c
 For example, can use a rich picture to represent the insights from user research in a diagram
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-26 at 18.55.31.png}
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-02-26 at 18.55.31.png}
     \caption{Rich Picture about a pub}
 \end{figure}
 \subsection{Requirements}
@@ -1241,5 +1241,143 @@ When we have user research, we also have to think of:
     \item Verifiability: how well the claim can be cross-checked with observations independent of original dataset
     \item Traceability: documentation of reasoning that led from original data to final claim
 \end{itemize}
-
+\section{Lecture 12 - Interaction}
+\subsection{Information and Control}
+We can describe the self-information of a message m in bits:
+\[
+I(m) = \log_2 \left(\frac{1}{P(m)} \right) = -\log_2(P(m))
+\]
+We can also use the binary entropy function to find the entropy of a first message with probability p, and a second message with probability q=1-p:
+\[
+H_2(p) = -p\log_2(p) - q\log_2(q)
+\]
+The average self-information in a message space $\mathbb{M}$ is known as entropy:
+\[
+H(\mathbb{M}) = \sum_{m \in \mathbb{M}} P(m) I(m) = - \sum_{m \in \mathbb{M}} P(m) \log_2 (P(m))
+\]
+We can also define entropy as the average bits required to communicate a message, when using an optimal coding scheme. \\
+\textbf{Redundancy}: the difference between the average actual bits used for communication compared to the average bits required for communication using an optimal coding scheme. \\
+\textbf{Perplexity}: the weighted average number of choices a random variable has to make:
+\[
+PP = 2^H
+\]
+We also have \textbf{mutual information}, which for two random variables $\mathbb{A}$ and $\mathbb{B}$ is:
+\[
+I(\mathbb{A}; \mathbb{B}) = \sum_{a \in \mathbb{A}} \sum_{b \in \mathbb{B}} P(a,b) 
+\log_2 \left( \frac{P(a,b)}{P(a)P(b)} \right)
+\]
+This expresses how many bits of information about a random variable can be obtained by observing another random variable. This can also be thought of as how much knowing one random variable reduces the uncertainty of another random variable. If both random variables were independent, then the mutual information is 0. \\ \\
+Using the concept of mutual information, we can find the \textbf{rate} R. Assuming that a random variable $\mathbb{I}$ is a distribution over a set of words a user is intending to write, and the random variable $\mathbb{O}$ is a distribution over the set of words the user is writing. The rate is then:
+\[
+R = \frac{I(\mathbb{I; O})}{t}
+\]
+Where $I(\mathbb{I; O})$ is the mutual information of $\mathbb I$ and $\mathbb O$. \\
+We can rewrite $I(\mathbb{I; O})$ as $H(\mathbb I) - H(\mathbb I | \mathbb O)$, where $H(\mathbb I | \mathbb O)$ is the conditional entropy. Thus the equation becomes:
+\[
+R = \frac{H(\mathbb I) - H(\mathbb I | \mathbb O)}{t}
+\]
+If the probability of error is zero, then $H(\mathbb I | \mathbb O)$ becomes 0.
+\subsubsection{Closed-loop Human Computer Systems}
+We can view human-computer interaction as control system.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-03-01 at 11.53.30.png}
+    \caption{Human-Computer Interaction as Computer System}
+\end{figure}
+\subsection{Dialogue}
+Dialogue is modelled as transitions between 2 or more partners. \\
+We can define dialogue as goal-directed action, where the cognitive challenge is understanding the communication partner, so that the appropriate next turn can be taken. But because of limitations of human cognition, users cannot do this perfectly. They need to engage in:
+\begin{enumerate}
+    \item Planning: deciding what to do
+    \item Inference: interpreting the computer's state
+\end{enumerate}
+There is also a \textbf{gulf-of-execution}: knowing what to do to have a desired state change in a computer, and \textbf{gulf-of-evaluation}: knowing what the current system in a system is by interpreting system output.
+\subsubsection{Mixed-initiative interaction}
+\textbf{Mixed-imitative interaction}: the idea that organising interactions in dialogue where both the computer and human can take initiative by coupling an automated service with direct manipulation. \\
+A mixed-initiative interface needs to infer a user's goals so that it can act upon them. Once the system has inferred the user's beliefs, it needs to decide what action to take. \\
+There are some principles behind this:
+\begin{itemize}
+    \item Only automate if a direct manipulation solution will be inferior
+    \item Need to consider how the user might be uncertainty in their automation mechanisms
+    \item If the system is uncertain about the user's intent, the system should ask the user, after considering the cost of interrupting the user
+    \item Allow the user to trigger and terminate functions
+    \item System should continue to learn and adapt their models to user's goals and needs
+    \item System should maintain memory of recent interactions, and allow the user to refer to that
+\end{itemize}
+\subsection{Tool Use}
+The idea of tool use in HCL is that a computer system is a tool for controlling something else. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-03-01 at 12.05.43.png}
+\end{figure}
+\subsubsection{Utility}
+\textbf{Utility}: how the interaction system does the tasks which the user's want to do. Utility is about the relation between functionality and user's needs and wants. This is based on getting-the-right-design: seeing if there is functionality in a system that in principle can do what is needed. 
+\subsubsection{Usability}
+\textbf{Usability}: concerns how easily computer-based tools may be operated when users try to accomplish a task. \\
+This concerns whether users can actually use a product in a way which makes it possible to realise its utility.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{Pictures/Screenshot 2023-03-01 at 12.08.59.png}
+\end{figure}
+We also have \textbf{acceptability}: whether users choose to use a tool. There is 
+\begin{itemize}
+    \item \textbf{Practical Acceptability}: cost, reliability of the interactive system, and its compatibility with other systems. 
+    \item \textbf{Social Acceptability}: whether interactions map well to the social norms and roles in the settings where they are used
+\end{itemize}
+Not that acceptability also includes the choice to not use a system. \\
+Finally, we want to think about \textbf{accessibility}: we want the product to be used by as large a group of users in as diverse situations as possible.
+\subsection{Automation}
+\textbf{Automation}: allocation of tasks to machines. There are types of automation:
+\begin{center}
+\begin{tabulary}{0.9\textwidth}{|C|C|C|}
+    \hline
+\thead{Type of Automation} & \thead{Human information processing stage} & \thead{How ti works} \\ 
+                    \hline
+Acquisition & Sensory Processing & System sensing and registering of input data \\ \hline
+Analysis & Perception/Working memory & Automation of information analysis \\ \hline
+Decision & Decision Making & Deciding and selecting appropriate actions \\ \hline
+Action & Response Selection & Machine can make an action choice \\ \hline
+Adaptive & Type and level of automation varies based on context  & Depends on the situation the system can take control \\ \hline
+    \end{tabulary}
+\end{center}
+There are also levels of automation:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-03-01 at 12.17.36.png}
+\end{figure}
+We can evaluate this both in a user-centric manner and a system-level manner. In a user-centric manner:
+\begin{enumerate}
+    \item It can reduce and increase user's mental workload - if the system is difficult to understand then can increase mental workload
+    \item It can affect user's situation awareness - reduce user's awareness of the system
+    \item It can give rise of complacency from overtrust in automation
+    \item It can also result in skill degradation
+\end{enumerate}
+In a system-level:
+\begin{enumerate}
+    \item Automation reliability: how effective a system is in automation
+    \begin{itemize}
+        \item True positive rate (sensitivity): ability of a system to correctly diagnose a problem, or identify an object
+        \item False positive rate (false alarm rate): system's inability to separate positive from negative cases.
+    \end{itemize}
+\end{enumerate}
+There is also a framework to identify how automation should work:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-03-01 at 12.25.15.png}
+\end{figure}
+\subsection{Practice}
+We know that interactive systems never fully prescribe how they are used in real-life. In reality, users ignore, alter and work around all interactive systems as part of their practice. \\
+We also have \textbf{personalisation}: changing the appearance of interactive systems. \\
+There is \textbf{tailoring}: where users intentionally modify the functionality of interactive systems. This can be done by:
+\begin{itemize}
+    \item Customisation: adapt the product by selecting attribute values from a selection
+    \item Integration: adding new features by linking existing components
+    \item Extension: adding new code onto the system
+\end{itemize}
+Finally, we have \textbf{appropration}: adaption and adoption processes, which might change workflows, division of labor, and organisation processes. Some guidelines for this are:
+\begin{itemize}
+    \item Allow interpretation: user's can add their own meaning
+    \item Expose intentions: tell users what the intended use of the function is
+    \item Encourage sharing: allow uers to share their appropriations.
+\end{itemize}
 \end{document}
