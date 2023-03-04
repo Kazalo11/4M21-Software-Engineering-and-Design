@@ -1329,9 +1329,9 @@ Finally, we want to think about \textbf{accessibility}: we want the product to b
 \subsection{Automation}
 \textbf{Automation}: allocation of tasks to machines. There are types of automation:
 \begin{center}
-\begin{tabulary}{0.9\textwidth}{|C|C|C|}
+\begin{tabulary}{0.99\textwidth}{|p{3cm}|C|C|}
     \hline
-\thead{Type of Automation} & \thead{Human information processing stage} & \thead{How ti works} \\ 
+\thead{Type of \\ Automation} & \thead{Human information processing stage} & \thead{How it works} \\ 
                     \hline
 Acquisition & Sensory Processing & System sensing and registering of input data \\ \hline
 Analysis & Perception/Working memory & Automation of information analysis \\ \hline
@@ -1378,6 +1378,116 @@ Finally, we have \textbf{appropration}: adaption and adoption processes, which m
 \begin{itemize}
     \item Allow interpretation: user's can add their own meaning
     \item Expose intentions: tell users what the intended use of the function is
-    \item Encourage sharing: allow uers to share their appropriations.
+    \item Encourage sharing: allow users to share their appropriations.
 \end{itemize}
+\section{User Interfaces}
+\subsection{User Interfaces}
+In every user interface, we have:
+\begin{itemize}
+    \item Devices
+    \begin{itemize}
+        \item Input: user provides input to the system
+        \item Output: system provides output to the user, also called \textbf{displays}
+    \end{itemize}
+    \item Interaction techniques: how we translate inputs from input devices and context sensors into changes in the rest of the user interface
+    \item Representations: how data/events/objects/actions appear to the user
+    \item Organisation: broader set of principles that organise the data environment in the user interface
+\end{itemize}
+We will also have some design objectives:
+\begin{itemize}
+    \item Usability
+    \item Accessibility
+    \item Efficiency
+    \item Learnability
+\end{itemize}
+Some example guidelines can be found from Nielsen's heuristics:
+\begin{itemize}
+    \item Visibility of system status: current state of system should be visible to user
+    \item Help users recognise, diagnose and recover from errors by providing understandable error messages
+    \item Help and documentation
+\end{itemize}
+\subsection{Input}
+The types of input are:
+\begin{itemize}
+    \item Direct control - pointing devices to allow users to select absolute coordinates on display
+    \item Indirect control - pointing devices enable the user to control a cursor on a display in response to manipulation of pointing device e.g computer mouse
+    \item Uncertain control - class of input devices which must be robust in presence of significant uncertainty around user's intention e.g brain-computer interfaces
+\end{itemize}
+\subsection{Displays}
+We can define \textbf{display} - visual displays, haptic devices and other devices that can render information in a modality than humans can perceive. \\
+This includes \textbf{visual encoding}: a way to show a nominal, ordered or quantitative variable. These are separated into:
+\begin{itemize}
+    \item Visual marks - geometric primitives such as points/areas/lines
+    \item Visual channels - position of a mark, its color and its texture
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-03-04 at 18.46.20.png}
+\end{figure}
+\subsection{Interaction Techniques}
+An \textbf{interaction technique} is a computation which couples input and output, to support elementary interactive tasks. These can be done in the response to the direct objectives:
+\begin{center}
+\begin{tabulary}{0.99\textwidth}{|C|C|}
+    \hline
+\thead{Design Objective} & \thead{Operationalisation} \\ 
+                    \hline
+Performance & Speed and accuracy in representative tasks \\ \hline
+Learnability & Rate of learning/time to achieved desired skill level \\ \hline
+Accessibility & Suitable for users of different abilities \\ \hline
+    \end{tabulary}
+\end{center}
+We can also enter text and data, methods which allow this are called text entry methods. We can also have intelligent text entry methods which infer/predict a user's intended text.
+\subsection{Commands and Navigation}
+We have to be concerned about naming commands/actions/objects. This can be challenging, due to the vocabulary problem: people tend to not come up with the same name for actions. \\
+We also have \textbf{command line interfaces}. These can be composed into:
+\begin{itemize}
+    \item Prompt: system-generated indication that the system is awaiting a command from the user
+    \item Command: instruction provided by the user to the system
+    \item Parameter list: set of command-specific additional instruction provided by the user
+\end{itemize}
+This brings some design issues:
+\begin{itemize}
+    \item Naming: how does user know name of commands the systems understands
+    \item Learning: how does the user learn the availability of commands
+    \item Transparency: does the system convey to the user the way in which it interprets commands
+\end{itemize}
+We can also have \textbf{notational systems}: these have novel graphical elements which are composed due to novel visual grammars (rules)
+\subsection{Graphical User Interfaces}
+\textbf{Graphical User Interfaces}: these allow users to efficiently carry out many everyday computing tasks. We also have to care about visibility:
+\begin{itemize}
+    \item What You See Is What You Get - word processors show the efforts of fonts, sizes as you do it
+    \item Visibility of commands: revealing all possible text commands
+    \item Visibility of status: ensuring that the graphical user interface shows the status of entities relevant to user's goals
+\end{itemize}
+We should also have consistency: representations are similar across the user interface. However, this might not always be good:
+\begin{itemize}
+    \item We need to identify good, not poor consistency
+    \item We need to define consistency
+\end{itemize}
+There is also the principle of \textbf{direct manipulation}: the interface should have:
+\begin{itemize}
+    \item Physical actions/presses of labeled buttons
+    \item Rapid, reversible, incremental actions who effects on the objects of interest are visible immediately
+    \item Continuous representations of objects/actions of interests with meaningful visual metaphors
+\end{itemize}
+\subsection{Reality-Based Interaction}
+\textbf{Reality-Based Interactions}: framework which provides 4 aims for building interactive technology:
+\begin{enumerate}
+    \item Naive physics: need to move control of computer onto physical world
+    \item Body-awareness/skills: should move limbs like in real life
+    \item Environment-awareness/skills: use of touch in user interface
+    \item Social-awareness/skills: making sure that the reality-based interaction has realistic awareness e.g gaze direction of remote person is correct
+\end{enumerate}
+We also have \textbf{mixed-reality} which mixes virtual and real content to create a new experience for the user. There is a spectrum of mixed-reality continuum:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Pictures/Screenshot 2023-03-04 at 19.07.43.png}
+\end{figure}
+We also have \textbf{virtual reality}: interactive environment that responds to user's actions. These are defined by:
+\begin{enumerate}
+    \item Blocking out sensory impressions generated by real world
+    \item Continuously updated computer graphics
+    \item Tracking of user position/orientation
+    \item Input devices which enable interactions with virtual objects
+\end{enumerate}
 \end{document}
