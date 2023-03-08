@@ -10,6 +10,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{minted}
+\usepackage{multicol}
 \usepackage{pdfpages}
 \usepackage{tabulary}
 \usepackage[numbers]{natbib}
@@ -612,7 +613,7 @@ What if we now have new requirements? When a sale is made:
 \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-02-08 at 11.55.20.png}
 \end{figure}
 \section{Lecture 6 - Software Development Methodologies}
-\subsection{Waterfall Model}
+\subsection{Waterfall Model} \label{waterfall}
 There is a basic traditional waterfall model for developing software based on the software process \eqref{sp}:
 \begin{figure}[H]
     \centering
@@ -1380,7 +1381,7 @@ Finally, we have \textbf{appropration}: adaption and adoption processes, which m
     \item Expose intentions: tell users what the intended use of the function is
     \item Encourage sharing: allow users to share their appropriations.
 \end{itemize}
-\section{User Interfaces}
+\section{Lecture 13 - User Interfaces}
 \subsection{User Interfaces}
 In every user interface, we have:
 \begin{itemize}
@@ -1490,4 +1491,162 @@ We also have \textbf{virtual reality}: interactive environment that responds to 
     \item Tracking of user position/orientation
     \item Input devices which enable interactions with virtual objects
 \end{enumerate}
+\section{Lecture 14 - Design}
+\subsection{Design}
+\begin{itemize}
+    \item Design matters to people, and it affects the way we perceive, experience, remember, decide and form habits. It also is a catalyst of innovation, and a central driver of renewal of societies and economies.
+    \item An \textbf{ultimate particular} is a concept that realises the idea in some form that can be trialed. These are about possible worlds, as design can help create an alternative reality. 
+    \item As a designer, you problem-solve through intensive iteration, trial and error, and search amongst possible solutions to problems. 
+    \item Design should aim at creating new transformative possibilities
+\end{itemize}
+There are also \textbf{design probes}: you send a kit out into the wild to users and allow them to engage with it without the presence of a researcher.
+\subsubsection*{Design in HCI}
+In HCI, we focus on interactive technology. This means we must have a human-centred design - the primary success criteria in design must refer to the people who are using the artefact. Furthermore, the choice which are made must be ethically sound and defendable
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-03-08 at 12.10.30.png}
+    \caption{Simplified view of design}
+\end{figure}
+This picture explains the process of design:
+\begin{enumerate}
+    \item The designer arrives at an artefact using design knowledge
+    \item Design knowledge is captured as data informing the designer about possible contexts of use for users
+    \item This artefact can be used in many contexts and by many users, some of which cannot be anticipated by the designer
+\end{enumerate}
+\subsubsection*{User-centred}
+To be user-centered, we must have:
+\begin{itemize}
+    \item User focus: understanding and serving a user's goals, tasks and needs
+    \item User involvement: representative users are actively engaged throughout, which is necessary for iterative designs
+    \item Prototyping: early and continuous prototyping to help evaluate ideas
+    \item Evaluation in context: the prototypes must be evaluated with real users in real context
+    \item Holistic design: understanding that all the aspects of a product e.g advertisements, social media presence etc affect its use
+\end{itemize}
+\subsubsection*{Rationale for Design}
+We want to design so that we can:
+\begin{itemize}
+    \item Improve
+    \item Create
+    \item Inform
+    \item Produce knowledge
+\end{itemize}
+\subsubsection*{Design Thinking}
+\textbf{Design thinking} is used to define a view of what constitutes design. It consists of:
+\begin{itemize}
+    \item Divergent Thinking: chart the options which are avaliable
+    \item Convergent Thinking: narrow down the options to the most promising one
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Pictures/Screenshot 2023-03-08 at 12.19.41.png}
+\end{figure}
+This focuses on 2 types of knowledge-creation activities:
+\begin{itemize}
+    \item Creative activities: knowing what to design
+    \item Problem-solving activities: knowing how to design it
+\end{itemize}
+\subsubsection*{What should be designed?}
+A key question is: \textbf{what should be designed} \\
+We have \textbf{valued-sensitive design} which is used to build design based on principles that users find important. This includes:
+\begin{itemize}
+    \item Basing designs on empirical data, and empirical user research
+    \item We should involve users from early stage research via user research to late stage research through evaluation
+\end{itemize}
+We should also be ready not to design when the data will have a negative outcome on users. 
+\subsection{Design Cognition}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Pictures/Screenshot 2023-03-08 at 12.24.50.png}
+\end{figure}
+This entails:
+\begin{itemize}
+    \item Convergent thinking: improving existing solutions by making local adjustments
+    \item Divergent thinking: identify distant solutions
+    \item Reconceptualising problems: rethinking defining elements of a design problem
+    \item Reorganising design situations: designers facilitate cognition by organising external circumstances e.g sketching
+\end{itemize}
+The general characteristics of design cognition are:
+\begin{itemize}
+    \item Iteration: we should carry out cycles of combining known solutions and ideas into protosolutions, and then repeat
+    \item Tight coupling between problems and solutions: designers should alternate between them
+    \item Exploration/Exploitation: designers should alternate between divergent thinking (exploring) and convergent thinking (exploitation)
+\end{itemize}
+To find a solution, we need to have a well-defined \textbf{design task}. To do this, we need:
+\begin{itemize}
+    \item Design decisions: open decisions which must be decided toward a design
+    \item Design space: set of all designs to be considered
+    \item Objectives: properties than an acceptable design must possess
+    \item Constraints: hard limitations + requirements on design
+\end{itemize}
+If we have a well-defined design task, then we can use optimisation to solve the problem, through a search process that systematically searches the design space using a rule. However, most problems are vaguely defined to begin with. \\ \\
+We can also use creative thinking. This can be done by:
+\begin{enumerate}
+    \item Generate as many candidates as possible
+    \item Select candidates by evaluating them against objectives
+    \item Reflect on progress, try to find alternative approaches
+    \item If needed, refine problem description
+    \item Iterate until satisfied
+\end{enumerate}
+We can have idea generation methods such as brainstorming. This is based on principles:
+\begin{itemize}
+    \item Postpone criticism
+    \item Divergence: encourage wild ideas
+    \item Quantity
+    \item Accumulation of knowledge: can build on proposed ideas
+    \item Every participants idea is equally valuable
+\end{itemize}
+The challenge is that some problems are ambiguous. These can be:
+\begin{itemize}
+    \item Ill-defined problem: no clear problems, or too many constraints
+    \item Wicked problem: the unfavourable properties are extreme to an extent that the problem solving is not meaning i.e devise a means to eliminate homelessness in society.
+\end{itemize}
+\subsection{Design Practice}
+We have design practices to help designers manage complexity:
+\begin{enumerate}
+    \item Design has multiple objectives/constraints
+    \item Design choices are made under uncertainty
+    \item Design projects have many stakeholders/materials/documents
+\end{enumerate}
+\subsubsection*{Prototyping}
+We have prototyping for:
+\begin{enumerate}
+    \item Studying the feasibility of an idea by creating it
+    \item Presenting an idea in a concrete form for others e.g colleagues
+\end{enumerate}
+\subsection{Design Processes}
+A \textbf{design process} is a structure/practice for carrying out design projects in an organisation. We have user-centered design processes, which have 4 core phases:
+\begin{itemize}
+    \item User Research
+    \item Formation of design goals (Requirements)
+    \item Generation of design ideas (design)
+    \item Evaluation
+\end{itemize}
+This is similar to the waterfall model \eqref{waterfall}.
+\subsubsection*{Usability Engineering}
+The \textbf{usability engineering} lifecycle is a lifecycle model to help developers launch products, and keep them updated. However, it has no theoretical background, and doesn't help with how to produce design ideas. \\
+It is made of 10 phases:
+\begin{multicols}{2}
+\begin{enumerate}
+    \item Know they user
+    \item Competitive analysis
+    \item Set usability goals
+    \item Design stage
+    \item Coordinated design
+    \item Guidelines + heuristics
+    \item Prototyping
+    \item Empirical User Testing
+    \item Iterative Design
+    \item Collect feedback from field
+\end{enumerate}
+\end{multicols}
+\subsubsection*{Human Factors Engineering}
+\textbf{Human factors engineering}: the design + construction of safe/reliable technological systems. This puts a greater emphasis on safety. It consists of 5 stages which are iterated until requirements are met: 
+\begin{enumerate}
+    \item Ideation: Imagine cases for new features/devices
+    \item Requirements
+    \item Design
+    \item Testing
+    \item Maintenance 
+\end{enumerate}
+
 \end{document}
